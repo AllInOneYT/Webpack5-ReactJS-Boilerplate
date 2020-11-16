@@ -6,7 +6,6 @@
 * dev and prod config
 * optimization
 * minify
-* and many more
 
 ### configure webpack 5 for react from scratch
 
