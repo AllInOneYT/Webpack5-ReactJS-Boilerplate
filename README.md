@@ -2,6 +2,7 @@
 
 ## features
 * hot reload
+* file loader
 * sass
 * dev and prod config
 * optimization
