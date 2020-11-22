@@ -15,7 +15,26 @@ module.exports = merge(config, {
         rules: [
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    { loader: "css-loader", options: { sourceMap: true } },
+                    {
+                        loader: "postcss-loader", options: {
+                            sourceMap: true,
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        "autoprefixer",
+                                        {
+                                            // Options
+                                        },
+                                    ],
+                                ],
+                            },
+                        },
+                    },
+                    { loader: "sass-loader", options: { sourceMap: true } },
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -27,6 +46,7 @@ module.exports = merge(config, {
         ]
     },
     plugins: [
+
         new MiniCssExtractPlugin({
             filename: "[name].[fullhash].css"
         }),
